@@ -1,8 +1,17 @@
 const express = require("express");
 const { ApolloServer, gql } = require("apollo-server-express");
 const axios = require("axios");
+const cors = require("cors");
 
 const app = express();
+
+const corsOptions = {
+  origin: "https://henryproctor.com",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 
 const typeDefs = gql`
   type Weather {
